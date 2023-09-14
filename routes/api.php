@@ -22,7 +22,7 @@ Route::get('find/descricao/{descricao}',[ServicoController::class,'pesquisarPorD
 Route::get ('all',
 [ServicoController::class, 'retornarTodos']);
 
-Route::post ('nome', [ServicoController::class, 'pesquisarPorNome']);
+Route::get ('find/nome/{nome}', [ServicoController::class, 'pesquisarPorNome']);
 
 Route::delete('delete/{id}',[ServicoController::class, 'excluir']);
 

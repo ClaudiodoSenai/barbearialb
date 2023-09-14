@@ -1,39 +1,47 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Controllers\Str;
 use App\Http\Requests\ServicoFormRequest;
+use App\Http\Requests\ServicoUpdateFormRequest;
 use App\Models\Servico;
 use Illuminate\Http\Request;
-use PhpParser\Node\Stmt\For_;
 
 class ServicoController extends Controller
 {
     public function store(ServicoFormRequest $request){
-        $servicos = Servico::create([
+        $servico = Servico::create([
             'nome' => $request ->nome,
             'descricao' => $request ->descricao,
             'duracao' => $request ->duracao,
-            'preco' => $request ->preco,
+            'preco' => str_replace(',', '.', $request->preco)
 
         ]); 
         return response()->json([
             "success" => true, 
             "message" => "Serviços cadastrado com sucesso",
-            "data" => $servicos
+            "data" => $servico
         ], 200);
     }
    
-    
+    public function retornarTodos()
+    {
+        $usuarios = Servico::all();
+        return response()->json([
+            'status' => true,
+            'data' => $usuarios
+        ]);
+    }
+
     public function pesquisarPorNome(Request $request)
     {
-        $servicos =  Servico::where('nome', 'like', '%' . $request->nome . '%')->get();
+        $servico =  Servico::where('nome', 'like', '%' . $request->nome . '%')->get();
 
-        if (count($servicos) > 0) {
+        if (count($servico) > 0) {
 
             return response()->json([
                 'status' => true,
-                'data' => $servicos
+                'data' => $servico
             ]);
         }
 
@@ -45,49 +53,49 @@ class ServicoController extends Controller
 
     public function excluir($id)
     {
-        $servicos = Servico::find($id);
+        $servico = Servico::find($id);
 
-        if (!isset($servicos)) {
+        if (!isset($servico)) {
             return response()->json([
                 'status' => false,
                 'message' => "Servico não encontrado"
             ]);
         }
-        $servicos->delete();
+        $servico->delete();
         return response()->json([
             'status' => true,
             'message' => "servicos excluido com sucesso"
         ]);
     }
 
-    public function update(Request $request)
+    public function update(ServicoUpdateFormRequest $request)
     {
-        $servicos = Servico::find($request->id);
+        $servico = Servico::find($request->id);
 
-        if (!isset($servicos)) {
+        if (!isset($servico)) {
             return response()->json([
                 'status' => false,
                 'message' => "servicos não encontrado"
             ]);
         }
         if (isset($request->descricao)) {
-            $servicos->descricao = $request->descricao;
+            $servico->descricao = $request->descricao;
         }
 
         if (isset($request->nome)) {
-            $servicos->nome = $request->nome;
+            $servico->nome = $request->nome;
         }
 
         if (isset($request->preco)) {
-            $servicos->preco = $request->preco;
+            $servico->preco = $request->preco;
         }
 
         if (isset($request->duracao)) {
-            $servicos->duracao = $request->duracao;
+            $servico->duracao = $request->duracao;
         }
         
 
-        $servicos->update();
+        $servico->update();
 
         return response()->json([
             'status' => true,
@@ -97,13 +105,13 @@ class ServicoController extends Controller
 
     public function pesquisarPorDescricao(Request $request)
     {
-        $servicos =  Servico::where('descricao', 'like', '%' . $request->descricao . '%')->get();
+        $servico =  Servico::where('descricao', 'like', '%' . $request->descricao . '%')->get();
 
-        if (count($servicos) > 0) {
+        if (count($servico) > 0) {
 
             return response()->json([
                 'status' => true,
-                'data' => $servicos
+                'data' => $servico
             ]);
         }
 }

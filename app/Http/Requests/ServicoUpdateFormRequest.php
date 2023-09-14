@@ -6,7 +6,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class ServicoFormRequest extends FormRequest
+class ServicoUpdateFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,13 +24,12 @@ class ServicoFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nome' => 'required|max:80|min:5 |unique:servicos,nome',
-            'descricao' => 'required|max:200|min:10',
-            'duracao' => 'required|numeric',
-            'preco' => 'required|decimal:2',
+            'nome' => 'max:80|min:5 |unique:servicos,nome',
+            'descricao' => 'max:200|min:10',
+            'duracao' => 'numeric',
+            'preco' => 'decimal:2',
         ];
     }
-
     public function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(response()->json([
@@ -42,16 +41,15 @@ class ServicoFormRequest extends FormRequest
     public function messages()
     {
         return [
-            'nome.required' => "O campo nome é obrigatorio",
             'nome.max' => 'o campo nome deve conter no máximo 80 caracteres',
             'nome.min' => 'o campo nome deve conter no minimo 5 caracteres',
             'nome.unique'=>'nome já cadastrado no sistema',
-            'descricao.required' => 'descricao obrigatório',
+           
             'descricao.max' => 'descricao deve conter no máximo 200 caracteres',
             'descricao.min' => 'descricao deve conter no mínimo 10 caracteres',
-            'duracao.required' => 'A duração é obrigatório',
+          
             'duracao.numeric' => 'O campo deve conter apenas numeros',
-            'preco.required' => 'O campo é obrigatório',
+          
             'preco.decimal' => 'Informar valores em reais',
         
         ];

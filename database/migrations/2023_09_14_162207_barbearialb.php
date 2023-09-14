@@ -9,9 +9,10 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+   
+        public function up(): void
     {
-        Schema::create('barbearialbs', function (Blueprint $table) {
+        Schema::create('servicos', function (Blueprint $table) {
             $table->id();
             $table->string('nome', 80)->unique()->nullable(false);
             $table->string('descricao', 200)->nullable(false);
@@ -20,12 +21,13 @@ return new class extends Migration
             $table->timestamps();
         });
     }
+    
 
-    /**
+    /*
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('barbearialbs');
+        Schema::dropIfExists('servicos');
     }
 };
