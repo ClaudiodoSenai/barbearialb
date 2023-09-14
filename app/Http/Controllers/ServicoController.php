@@ -75,7 +75,7 @@ class ServicoController extends Controller
         if (!isset($servico)) {
             return response()->json([
                 'status' => false,
-                'message' => "servicos não encontrado"
+                'message' => "Serviços não atualizados"
             ]);
         }
         if (isset($request->descricao)) {
@@ -99,7 +99,7 @@ class ServicoController extends Controller
 
         return response()->json([
             'status' => true,
-            'message' => "servicos atualizado"
+            'message' => "Serviços atualizado"
         ]);
     }
 
