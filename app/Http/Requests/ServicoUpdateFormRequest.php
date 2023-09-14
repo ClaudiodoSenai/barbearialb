@@ -24,7 +24,7 @@ class ServicoUpdateFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nome' => 'max:80|min:5 |unique:servicos,nome',
+            'nome' => 'max:80|min:5',
             'descricao' => 'max:200|min:10',
             'duracao' => 'numeric',
             'preco' => 'decimal:2',
@@ -43,7 +43,7 @@ class ServicoUpdateFormRequest extends FormRequest
         return [
             'nome.max' => 'o campo nome deve conter no máximo 80 caracteres',
             'nome.min' => 'o campo nome deve conter no minimo 5 caracteres',
-            'nome.unique'=>'nome já cadastrado no sistema',
+            
            
             'descricao.max' => 'descricao deve conter no máximo 200 caracteres',
             'descricao.min' => 'descricao deve conter no mínimo 10 caracteres',
