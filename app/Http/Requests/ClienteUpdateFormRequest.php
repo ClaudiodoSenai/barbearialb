@@ -24,20 +24,20 @@ class ClienteUpdateFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nome' => 'required|max:120|min:5 ',
-            'celular' => 'required|max:11|min:10',
-            'email' => 'required|max:120|unique:clientes,email|email:rfc,dns,'. $this->id,
-            'cpf' => 'required|unique:clientes,cpf|max:11|min:11,'. $this->id,
-            'dataNascimento' => 'required',
-            'cidade' => 'required|max:120',
-            'estado' => 'required|min:2|max:2',
-            'pais' => 'required|max:80',
-            'rua' => 'required|max:120',
-            'numero' => 'required|max:10',
-            'bairro' => 'required|max:100',
-            'cep' => 'required|min:8|max:8',
+            'nome' => 'max:120|min:5 ',
+            'celular' => 'max:11|min:10',
+            'email' => 'max:120|email:rfc,|unique:clientes,email,'. $this->id,
+            'cpf' => '|max:11|min:11|unique:clientes,cpf,'. $this->id,
+            'dataNascimento' => '',
+            'cidade' => 'max:120',
+            'estado' => 'min:2|max:2',
+            'pais' => 'max:80',
+            'rua' => 'max:120',
+            'numero' => 'max:10',
+            'bairro' => 'max:100',
+            'cep' => 'min:8|max:8',
             'complemento' => 'max:150',
-            'senha' => 'required'
+            'senha' => ''
         ];
     }
 
