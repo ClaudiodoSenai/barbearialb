@@ -93,7 +93,7 @@ class ClienteFormRequest extends FormRequest
             'bairro.max' => 'O campo bairro deve conter no máximo 2 caracteres',
 
             'cep.required' => "O campo cep é obrigatorio",
-            'cep.max' => 'o campo cep deve conter no máximo 8 caracteres',
+            'cep.max' => 'o campo cep deve conter no máximo 9 caracteres',
             'cep.min' => 'o campo cep deve conter no minimo 8 caracteres',
 
             'complemento.max' => 'O campo complemento deve conter no máximo 2 caracteres',

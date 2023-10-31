@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('rua', 120)->nullable(false);
             $table->string('numero', 10)->nullable(false);
             $table->string('bairro', 100)->nullable(false);
-            $table->string('cep', 8)->nullable(false);
+            $table->string('cep', 9)->nullable(false);
             $table->string('complemento', 150)->nullable(true);
             $table->string('senha')->nullable(false);
             $table->decimal('salario')->nullable(false);
