@@ -27,7 +27,7 @@ Route::put('update', [ServicoController::class, 'update']);
 //Clientes
 Route::post('cliente/store', [ClienteController::class, 'store']);
 Route::get('cliente/all', [ClienteController::class, 'retornarTodos']);
-Route::get('cliente/find/nome', [ClienteController::class, 'pesquisarPorNome']);
+Route::post('cliente/find/nome', [ClienteController::class, 'pesquisarPorNome']);
 Route::delete('cliente/delete/{id}', [ClienteController::class, 'excluir']);
 Route::put('cliente/update', [ClienteController::class, 'update']);
 Route::get('cliente/find/cpf', [ClienteController::class, 'pesquisarPorCpf']);
@@ -37,7 +37,7 @@ Route::get('cliente/find/email', [ClienteController::class, 'pesquisarPorEmail']
 //Profissional
 Route::post('profissional/store', [ProfissionalController::class, 'store']);
 Route::get('profissional/all', [ProfissionalController::class, 'retornarTodos']);
-Route::get('profissional/find/nome', [ProfissionalController::class, 'pesquisarPorNome']);
+Route::post('profissional/find/nome', [ProfissionalController::class, 'pesquisarPorNome']);
 Route::delete('profissional/delete/{id}', [ProfissionalController::class, 'excluir']);
 Route::put('profissional/update', [ProfissionalController::class, 'update']);
 Route::get('profissional/find/cpf', [ProfissionalController::class, 'pesquisarPorCpf']);
