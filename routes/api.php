@@ -17,10 +17,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 //Serviços
-Route::post('store', [ServicoController::class, 'store']);
+Route::post('store/servico', [ServicoController::class, 'store']);
 Route::get('find/descricao', [ServicoController::class, 'pesquisarPorDescricao']);
-Route::get('all',[ServicoController::class, 'retornarTodos']);
-Route::get('find/nome', [ServicoController::class, 'pesquisarPorNome']);
+Route::get('all/servico',[ServicoController::class, 'retornarTodos']);
+Route::post('find/nome', [ServicoController::class, 'pesquisarPorNome']);
 Route::delete('delete/{id}', [ServicoController::class, 'excluir']);
 Route::put('update', [ServicoController::class, 'update']);
 
