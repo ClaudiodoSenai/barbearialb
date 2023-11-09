@@ -23,6 +23,7 @@ Route::get('all/servico',[ServicoController::class, 'retornarTodos']);
 Route::post('find/nome', [ServicoController::class, 'pesquisarPorNome']);
 Route::delete('delete/{id}', [ServicoController::class, 'excluir']);
 Route::put('update', [ServicoController::class, 'update']);
+Route::get('servico/find/{id}', [ServicoController::class, 'pesquisarPorId']);
 
 //Clientes
 Route::post('cliente/store', [ClienteController::class, 'store']);
@@ -33,6 +34,7 @@ Route::put('cliente/update', [ClienteController::class, 'update']);
 Route::get('cliente/find/cpf', [ClienteController::class, 'pesquisarPorCpf']);
 Route::get('cliente/find/celular', [ClienteController::class, 'pesquisarPorTelefone']);
 Route::get('cliente/find/email', [ClienteController::class, 'pesquisarPorEmail']);
+Route::get('cliente/find/{id}', [ClienteController::class, 'pesquisarPorId']);
 
 //Profissional
 Route::post('profissional/store', [ProfissionalController::class, 'store']);
@@ -43,3 +45,4 @@ Route::put('profissional/update', [ProfissionalController::class, 'update']);
 Route::get('profissional/find/cpf', [ProfissionalController::class, 'pesquisarPorCpf']);
 Route::get('profissional/find/celular', [ProfissionalController::class, 'pesquisarPorTelefone']);
 Route::get('profissional/find/email', [ProfissionalController::class, 'pesquisarPorEmail']);
+Route::get('profissional/find/{id}', [ProfissionalController::class, 'pesquisarPorId']);

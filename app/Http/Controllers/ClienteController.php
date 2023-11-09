@@ -36,6 +36,22 @@ class ClienteController extends Controller
         ], 200);
     }
 
+    public function pesquisarPorId($id)
+    {
+        $cliente = Cliente::find($id);
+        if ($cliente == null) {
+            return response()->json([
+                'status' => false,
+                'message' => "cliente não encontrado"
+            ]);
+        }
+        return response()->json([
+            'status' => true,
+            'data' => $cliente
+        ]);
+    }
+   
+
     public function retornarTodos()
     {
         $usuarios = Cliente::all();

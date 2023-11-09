@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class ServicoController extends Controller
 {
     public function store(ServicoFormRequest $request){
-        $servico = Servico::create([
+        $servico = Servico ::create([
             'nome' => $request ->nome,
             'descricao' => $request ->descricao,
             'duracao' => $request ->duracao,
@@ -22,6 +22,21 @@ class ServicoController extends Controller
             "message" => "Serviços cadastrado com sucesso",
             "data" => $servico
         ], 200);
+    }
+
+    public function pesquisarPorId($id)
+    {
+        $servico = Servico ::find($id);
+        if ($servico == null) {
+            return response()->json([
+                'status' => false,
+                'message' => "servico não encontrado"
+            ]);
+        }
+        return response()->json([
+            'status' => true,
+            'data' => $servico
+        ]);
     }
    
     public function retornarTodos()
