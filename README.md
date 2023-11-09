@@ -6,7 +6,7 @@
 ```
 2. Acesse o diretório do projeto:
 ```
-cd Drogazin-api
+cd barbearialb
 ```
 3. Inicializando o Repositorio
 ```
