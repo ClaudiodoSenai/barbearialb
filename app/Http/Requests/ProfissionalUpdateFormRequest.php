@@ -26,8 +26,8 @@ class ProfissionalUpdateFormRequest extends FormRequest
         return [
             'nome' => 'max:120|min:5 ',
             'celular' => 'max:11|min:10',
-            'email' => 'max:120|email:rfc,|unique:profissional,email,' . $this->id,
-            'cpf' => '|max:11|min:11|unique:profissional,cpf,' . $this->id,
+            'email' => 'max:120|email:rfc,|unique:profissionals,email,' . $this->id,
+            'cpf' => '|max:11|min:11|unique:profissionals,cpf,' . $this->id,
             'dataNascimento' => '',
             'cidade' => 'max:120',
             'estado' => 'min:2|max:2',
