@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProfissionalController;
 use App\Http\Controllers\ServicoController;
@@ -46,3 +47,6 @@ Route::get('profissional/find/cpf', [ProfissionalController::class, 'pesquisarPo
 Route::get('profissional/find/celular', [ProfissionalController::class, 'pesquisarPorTelefone']);
 Route::get('profissional/find/email', [ProfissionalController::class, 'pesquisarPorEmail']);
 Route::get('profissional/find/{id}', [ProfissionalController::class, 'pesquisarPorId']);
+
+//Agendamento
+Route::post('/profissional/agendamento',[AgendaController::class,'criarHorarioProfissional' ]);
