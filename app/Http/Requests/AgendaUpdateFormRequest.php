@@ -6,7 +6,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class AgendaFormRequest extends FormRequest
+class AgendaUpdateFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -46,7 +46,6 @@ class AgendaFormRequest extends FormRequest
         return [
             'profissional_id.exists'=> 'Id não encontrado',
             'profissional_id.integer' => "Insira somente numeros inteiros",
-            'profissional_id.required' => 'Id do Profissional obrigatório ',
             'cliente_id.integer' => "Insira somente numeros inteiros",
             'servico_id.integer' => "Insira somente numeros inteiros",
             'data_hora.required' => 'Data obrigatória',
@@ -58,3 +57,4 @@ class AgendaFormRequest extends FormRequest
         ];
     }
 }
+
