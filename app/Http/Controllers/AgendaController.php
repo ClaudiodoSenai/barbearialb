@@ -105,4 +105,35 @@ class AgendaController extends Controller
             'message' => "Horarios atualizados"
         ]);
     }
+
+    public function pesquisarPorIdAgenda($id)
+    {
+        $agenda = Agenda::find($id);
+        if ($agenda == null) {
+            return response()->json([
+                "status" => false,
+                "message" => "Agendamento não encontrado"
+            ]);
+        }
+        return response()->json([
+            "status" => true,
+            "data" => $agenda
+        ]);
+    }
+
+    public function pesquisarPorData(Request $request)
+    {
+        $agenda = Agenda::where('data_hora', 'like', '%' . $request->data_hora . '%')->get();
+
+        if (count($agenda) > 0) {
+            return response()->json([
+                'status' => true,
+                'data' => $agenda
+            ]);
+        }
+        return response()->json([
+            'status' => false,
+            'message' => 'Não há resultados para a pesquisa'
+        ]);
+    }
 }
