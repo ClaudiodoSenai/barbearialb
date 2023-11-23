@@ -24,7 +24,7 @@ class RecuperarSenhaFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => 'required|max:120|email:rfc|exists:clientes,email'
+            'email' => 'required|max:120|email:rfc|exists:clientes,email|unique:clientes,email,'.$this->id
         ];
     }
 
