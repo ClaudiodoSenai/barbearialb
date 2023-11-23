@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ClienteFormRequest;
 use App\Http\Requests\ClienteUpdateFormRequest;
+use App\Http\Requests\RecuperarSenhaFormRequest;
 use App\Models\Cliente;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -26,7 +27,8 @@ class ClienteController extends Controller
             'bairro' => $request->bairro,
             'cep' => $request->cep,
             'complemento' => $request->complemento,
-            'senha' => Hash::make($request->senha)
+            'senha' => //Hash::make
+            ($request->senha)
 
         ]);
         return response()->json([
@@ -54,10 +56,10 @@ class ClienteController extends Controller
 
     public function retornarTodos()
     {
-        $usuarios = Cliente::all();
+        $clientes = Cliente::all();
         return response()->json([
             'status' => true,
-            'data' => $usuarios
+            'data' => $clientes
         ]);
     }
 
@@ -220,5 +222,27 @@ class ClienteController extends Controller
             'status' => false,
             'message' => 'Não há resultados para a pesquisa.'
         ]);
+    }
+
+    public function esqueciMinhaSenha(RecuperarSenhaFormRequest $request){
+        
+        if (!isset($cliente)) {
+            return response()->json([
+                'status' => false,
+                'message' => "Clientes não atualizados"
+            ]);
+        }
+        else{
+       $cliente = Cliente::where('email', $request->email)->first(); 
+       $novaSenha = $cliente->cpf;
+       $cliente->update(['senha' =>// Hash::make
+       ($novaSenha)]);
+
+        return response()->json([
+            'status' => true,
+            'message' => "Senha redefinida ",
+            'senha'=> $cliente->senha
+        ]);
+ }
     }
 }

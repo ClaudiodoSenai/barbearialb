@@ -12,15 +12,15 @@ class AgendaController extends Controller
     public function criarHorarioProfissional(AgendaFormRequest $request)
     {
 
-        $agendaProfissional =Agenda::where('data_hora', '=', $request->data_hora)->where('profissional_id', '=', $request->profissional_id)->get();
+        $agendaProfissional = Agenda::where('data_hora', '=', $request->data_hora)->where('profissional_id', '=', $request->profissional_id)->get();
 
-        if (count($agendaProfissional) > 0){ 
+        if (count($agendaProfissional) > 0) {
             return response()->json([
                 "success" => false,
                 "message" => "Horario ja cadastrado",
                 "data" => $agendaProfissional
             ], 200);
-        } else{
+        } else {
 
             $agendaProfissional = Agenda::create([
                 'profissional_id' => $request->profissional_id,
@@ -31,8 +31,7 @@ class AgendaController extends Controller
                 "message" => "Agendado com sucesso",
                 "data" => $agendaProfissional
             ], 200);
-        } 
-   
+        }
     }
     public function retornarTodos()
     {
@@ -62,48 +61,48 @@ class AgendaController extends Controller
 
     public function updateHorarios(AgendaUpdateFormRequest $request)
     {
-        $profissionalHorario = Agenda::find($request->id);
+        $agendaProfissional = Agenda::where('data_hora', '=', $request->data_hora)->where('profissional_id', '=', $request->profissional_id)->get();
 
-        if (!isset($profissionalHorario)) {
+        if (count($agendaProfissional) > 0) {
             return response()->json([
-                'status' => false,
-                'message' => "Horario não atualizados"
+                "status" => false,
+                "message" => "Horario ja cadastrado",
+                "data" => $agendaProfissional
+            ], 200);
+        } else {
+            
+            $agenda = Agenda::find($request->id);
+
+            if (!isset($agenda)) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Não há resultados para a Agenda'
+                ]);
+            }
+            if (isset($request->profissional_id)) {
+                $agenda->profissional_id = $request->profissional_id;
+            }
+            if (isset($request->cliente_id)) {
+                $agenda->cliente_id = $request->cliente_id;
+            }
+            if (isset($request->servico_id)) {
+                $agenda->servico_id = $request->servico_id;
+            }
+            if (isset($request->data_hora)) {
+                $agenda->data_hora = $request->data_hora;
+            }
+            if (isset($request->tipoPagamento)) {
+                $agenda->tipoPagamento = $request->tipoPagamento;
+            }
+            if (isset($request->valor)) {
+                $agenda->valor = $request->valor;
+            }
+            $agenda->update();
+            return response()->json([
+                'status' => true,
+                'message' => 'Agenda atualizada com sucesso'
             ]);
         }
-        
-        if (isset($request->profissional_id)) {
-            $profissionalHorario->profissional_id = $request->profissional_id;
-        }
-
-        if (isset($request->data_hora)) {
-            $profissionalHorario->data_hora = $request->data_hora;
-        }
-
-        if (isset($request->cliente_id)) {
-            $profissionalHorario->cliente_id = $request->cliente_id;
-        }
-
-        if (isset($request->servico_id)) {
-            $profissionalHorario->servico_id = $request->servico_id;
-        }
-
-        if (isset($request->tipoPagamento)) {
-            $profissionalHorario->tipoPagamento = $request->tipoPagamento;
-        }
-
-        if (isset($request->valor)) {
-            $profissionalHorario->valor = $request->valor;
-        }
-
-
-       
-
-        $profissionalHorario->update();
-
-        return response()->json([
-            'status' => true,
-            'message' => "Horarios atualizados"
-        ]);
     }
 
     public function pesquisarPorIdAgenda($id)
