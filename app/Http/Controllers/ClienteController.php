@@ -27,8 +27,7 @@ class ClienteController extends Controller
             'bairro' => $request->bairro,
             'cep' => $request->cep,
             'complemento' => $request->complemento,
-            'senha' => //Hash::make
-            ($request->senha)
+            'senha' => Hash::make($request->senha)
 
         ]);
         return response()->json([
@@ -231,13 +230,13 @@ class ClienteController extends Controller
         if ($cliente) {
             $novaSenha = $cliente->cpf;
             $cliente->update([
-                'senha' => $novaSenha,
+                'senha' => Hash::make($novaSenha),
                 'updated_at' => now()
             ]);
             return response()->json([
                 'status' => true,
                 'message' => 'Senha redefinida',
-                'nova_senha' => $novaSenha
+                'nova_senha' => Hash::make($novaSenha)
             ]);
         } else {
             return response()->json([

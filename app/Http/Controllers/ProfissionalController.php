@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProfissionalFormRequest;
 use App\Http\Requests\ProfissionalUpdateFormRequest;
 use App\Models\Profissional;
+use App\Models\Agenda;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -13,7 +14,7 @@ class ProfissionalController extends Controller
     public function store(ProfissionalFormRequest $request)
     {
         $profissional = Profissional::create([
-            'nome' =>  $request->nome,
+            'nome' => $request->nome,
             'celular' => $request->celular,
             'email' => $request->email,
             'cpf' => $request->cpf,
@@ -63,7 +64,7 @@ class ProfissionalController extends Controller
 
     public function pesquisarPorNome(Request $request)
     {
-        $profissional =  Profissional::where('nome', 'like', '%' . $request->nome . '%')->get();
+        $profissional = Profissional::where('nome', 'like', '%' . $request->nome . '%')->get();
 
         if (count($profissional) > 0) {
 
@@ -79,15 +80,24 @@ class ProfissionalController extends Controller
         ]);
     }
 
-    public function excluir($id)
+    public function excluir(Request $request)
     {
-        $profissional = Profissional::find($id);
+
+        $profissional = Profissional::find($request->id);
 
         if (!isset($profissional)) {
             return response()->json([
                 'status' => false,
                 'message' => "profissional não encontrado"
             ]);
+        }
+        if ($agendamento = Agenda::where('profissional_id', $request->id)->get()) {
+            if (count($agendamento) > 0) {
+                return response()->json([
+                    'status' => false,
+                    'message' => "Não foi possível excluir, pois o profissional possui agendamentos registrados."
+                ]);
+            }
         }
         $profissional->delete();
         return response()->json([
@@ -228,3 +238,4 @@ class ProfissionalController extends Controller
         ]);
     }
 }
+
