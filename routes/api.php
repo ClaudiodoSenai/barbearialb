@@ -36,7 +36,7 @@ Route::get('cliente/find/cpf', [ClienteController::class, 'pesquisarPorCpf']);
 Route::get('cliente/find/celular', [ClienteController::class, 'pesquisarPorTelefone']);
 Route::get('cliente/find/email', [ClienteController::class, 'pesquisarPorEmail']);
 Route::get('cliente/find/{id}', [ClienteController::class, 'pesquisarPorId']);
-Route::put('cliente/atualizar/senha', [ClienteController::class, 'esqueciMinhaSenha']);
+Route::post('cliente/atualizar/senha', [ClienteController::class, 'esqueciMinhaSenha']);
 //Profissional
 Route::post('profissional/store', [ProfissionalController::class, 'store']);
 Route::get('profissional/all', [ProfissionalController::class, 'retornarTodos']);

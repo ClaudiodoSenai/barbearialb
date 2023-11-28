@@ -122,8 +122,7 @@ class AgendaController extends Controller
 
     public function pesquisarPorData(Request $request)
     {
-        $agenda = Agenda::where('data_hora', 'like', '%' . $request->data_hora . '%')->get();
-
+        $agenda = Agenda::whereDate('data_hora', $request->data_hora)->get();
         if (count($agenda) > 0) {
             return response()->json([
                 'status' => true,

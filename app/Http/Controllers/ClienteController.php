@@ -52,7 +52,7 @@ class ClienteController extends Controller
             'data' => $cliente
         ]);
     }
-   
+
 
     public function retornarTodos()
     {
@@ -224,25 +224,29 @@ class ClienteController extends Controller
         ]);
     }
 
-    public function esqueciMinhaSenha(RecuperarSenhaFormRequest $request){
-        
-        if (!isset($cliente)) {
+    public function esqueciMinhaSenha(Request $request)
+    {
+     
+        $cliente = Cliente::where('email', 'ILIKE', $request->email)->first();
+        if ($cliente) {
+            $novaSenha = $cliente->cpf;
+            $cliente->update([
+                'senha' => $novaSenha,
+                'updated_at' => now()
+            ]);
+            return response()->json([
+                'status' => true,
+                'message' => 'Senha redefinida',
+                'nova_senha' => $novaSenha
+            ]);
+        } else {
             return response()->json([
                 'status' => false,
-                'message' => "Clientes não atualizados"
+                'message' => 'Cliente não encontrado'
             ]);
         }
-        else{
-       $cliente = Cliente::where('email', $request->email)->first(); 
-       $novaSenha = $cliente->cpf;
-       $cliente->update(['senha' =>// Hash::make
-       ($novaSenha)]);
-
-        return response()->json([
-            'status' => true,
-            'message' => "Senha redefinida ",
-            'senha'=> $cliente->senha
-        ]);
- }
     }
-}
+    
+    }
+    
+
