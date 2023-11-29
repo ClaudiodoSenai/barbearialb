@@ -134,4 +134,21 @@ class AgendaController extends Controller
             'message' => 'Não há resultados para a pesquisa'
         ]);
     }
+
+    public function pesquisarPorDataDoProfissional(Request $request)
+    {
+        $dataHora = $request->input('data_hora');
+        $agenda = Agenda::where('profissional_id',$request->profissional_id)->whereDate('data_hora', $dataHora)->get();
+        if (count($agenda) > 0) {
+            return response()->json([
+                'status' => true,
+                'data' => $agenda
+            ]);
+        }
+        return response()->json([
+            'status' => false,
+            'message' => 'Não há resultados para a pesquisa'
+        ]);
+    }
 }
+
