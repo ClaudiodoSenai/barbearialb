@@ -37,6 +37,7 @@ Route::get('cliente/find/celular', [ClienteController::class, 'pesquisarPorTelef
 Route::get('cliente/find/email', [ClienteController::class, 'pesquisarPorEmail']);
 Route::get('cliente/find/{id}', [ClienteController::class, 'pesquisarPorId']);
 Route::post('cliente/atualizar/senha', [ClienteController::class, 'esqueciMinhaSenha']);
+
 //Profissional
 Route::post('profissional/store', [ProfissionalController::class, 'store']);
 Route::get('profissional/all', [ProfissionalController::class, 'retornarTodos']);
@@ -47,6 +48,7 @@ Route::get('profissional/find/cpf', [ProfissionalController::class, 'pesquisarPo
 Route::get('profissional/find/celular', [ProfissionalController::class, 'pesquisarPorTelefone']);
 Route::get('profissional/find/email', [ProfissionalController::class, 'pesquisarPorEmail']);
 Route::get('profissional/find/{id}', [ProfissionalController::class, 'pesquisarPorId']);
+Route::post('profissional/atualizar/senha', [ProfissionalController::class, 'esqueciMinhaSenha']);
 
 //Agendamento
 Route::post('/profissional/agendamento',[AgendaController::class,'criarHorarioProfissional' ]);

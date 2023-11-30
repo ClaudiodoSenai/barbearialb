@@ -66,7 +66,6 @@ class ProfissionalFormRequest extends FormRequest
             'email.email' => 'formato de email invalido',
             'email.unique' => 'E-mail já cadastrado',
 
-
             'cpf.required' => 'CPF obrigatório',
             'cpf.max' => 'CPF deve conter no máximo 11 caracteres',
             'cpf.min' => 'CPF deve conter no mínimo 11 caracteres',
@@ -82,22 +81,22 @@ class ProfissionalFormRequest extends FormRequest
             'estado.max' => 'O campo estado deve conter no máximo 2 caracteres',
 
             'pais.required' => 'pais obrigatório',
-            'pais.max' => 'O campo pais deve conter no máximo 2 caracteres',
+            'pais.max' => 'O campo pais deve conter no máximo 80 caracteres',
 
             'rua.required' => 'rua obrigatório',
-            'rua.max' => 'O campo rua deve conter no máximo 2 caracteres',
+            'rua.max' => 'O campo rua deve conter no máximo 20 caracteres',
 
             'numero.required' => 'numero obrigatório',
-            'numero.max' => 'O campo numero deve conter no máximo 2 caracteres',
+            'numero.max' => 'O campo numero deve conter no máximo 10 caracteres',
 
             'bairro.required' => 'bairro obrigatório',
-            'bairro.max' => 'O campo bairro deve conter no máximo 2 caracteres',
+            'bairro.max' => 'O campo bairro deve conter no máximo 100 caracteres',
 
             'cep.required' => "O campo cep é obrigatorio",
             'cep.max' => 'o campo cep deve conter no máximo 9 caracteres',
             'cep.min' => 'o campo cep deve conter no minimo 8 caracteres',
 
-            'complemento.max' => 'O campo complemento deve conter no máximo 2 caracteres',
+            'complemento.max' => 'O campo complemento deve conter no máximo 150 caracteres',
 
             'senha.required' => 'Senha obrigatoria',
 

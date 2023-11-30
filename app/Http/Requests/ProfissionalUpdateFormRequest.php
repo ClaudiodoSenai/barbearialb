@@ -73,18 +73,18 @@ class ProfissionalUpdateFormRequest extends FormRequest
             'estado.min' => 'O campo estado deve conter no minimo 2 caracteres',
             'estado.max' => 'O campo estado deve conter no máximo 2 caracteres',
 
-            'pais.max' => 'O campo pais deve conter no máximo 2 caracteres',
+            'pais.max' => 'O campo pais deve conter no máximo 80 caracteres',
 
-            'rua.max' => 'O campo rua deve conter no máximo 2 caracteres',
+            'rua.max' => 'O campo rua deve conter no máximo 120 caracteres',
 
-            'numero.max' => 'O campo numero deve conter no máximo 2 caracteres',
+            'numero.max' => 'O campo numero deve conter no máximo 10 caracteres',
 
-            'bairro.max' => 'O campo bairro deve conter no máximo 2 caracteres',
+            'bairro.max' => 'O campo bairro deve conter no máximo 100 caracteres',
 
             'cep.max' => 'o campo cep deve conter no máximo 9 caracteres',
             'cep.min' => 'o campo cep deve conter no minimo 8 caracteres',
 
-            'complemento.max' => 'O campo complemento deve conter no máximo 2 caracteres',
+            'complemento.max' => 'O campo complemento deve conter no máximo 150 caracteres',
 
             'salario.decimal' => 'Informar valores em reais'
         ];

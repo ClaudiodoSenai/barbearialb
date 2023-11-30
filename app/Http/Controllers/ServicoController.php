@@ -41,10 +41,10 @@ class ServicoController extends Controller
    
     public function retornarTodos()
     {
-        $usuarios = Servico::all();
+        $servicos = Servico::all();
         return response()->json([
             'status' => true,
-            'data' => $usuarios
+            'data' => $servicos
         ]);
     }
 
@@ -53,13 +53,11 @@ class ServicoController extends Controller
         $servico =  Servico::where('nome', 'like', '%' . $request->nome . '%')->get();
 
         if (count($servico) > 0) {
-
             return response()->json([
                 'status' => true,
                 'data' => $servico
             ]);
         }
-
         return response()->json([
             'status' => false,
             'message' => 'Não há resultados para a pesquisa.'
@@ -69,7 +67,6 @@ class ServicoController extends Controller
     public function excluir($id)
     {
         $servico = Servico::find($id);
-
         if (!isset($servico)) {
             return response()->json([
                 'status' => false,
@@ -90,7 +87,7 @@ class ServicoController extends Controller
         if (!isset($servico)) {
             return response()->json([
                 'status' => false,
-                'message' => "Serviços não atualizados"
+                'message' => "Serviço não atualizado"
             ]);
         }
         if (isset($request->descricao)) {
@@ -109,12 +106,11 @@ class ServicoController extends Controller
             $servico->duracao = $request->duracao;
         }
         
-
         $servico->update();
 
         return response()->json([
             'status' => true,
-            'message' => "Serviços atualizado"
+            'message' => "Serviço atualizado"
         ]);
     }
 

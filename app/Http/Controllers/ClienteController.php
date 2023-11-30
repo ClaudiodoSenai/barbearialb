@@ -225,7 +225,7 @@ class ClienteController extends Controller
 
     public function esqueciMinhaSenha(Request $request)
     {
-     
+
         $cliente = Cliente::where('email', 'ILIKE', $request->email)->first();
         if ($cliente) {
             $novaSenha = $cliente->cpf;
@@ -245,7 +245,4 @@ class ClienteController extends Controller
             ]);
         }
     }
-    
-    }
-    
-
+}

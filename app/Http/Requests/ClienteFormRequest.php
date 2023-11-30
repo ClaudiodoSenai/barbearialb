@@ -25,9 +25,9 @@ class ClienteFormRequest extends FormRequest
     {
         return [
             'nome' => 'required|max:120|min:5 ',
-            'celular' => 'required|max:11|min:10',
+            'celular' => 'required|max:11|min:10|number',
             'email' => 'required|max:120|unique:clientes,email|email:rfc,dns',
-            'cpf' => 'required|unique:clientes,cpf|max:11|min:11',
+            'cpf' => 'required|unique:clientes,cpf|max:11|min:11|number',
             'dataNascimento' => 'required',
             'cidade' => 'required|max:120',
             'estado' => 'required|min:2|max:2',
@@ -35,7 +35,7 @@ class ClienteFormRequest extends FormRequest
             'rua' => 'required|max:120',
             'numero' => 'required|max:10',
             'bairro' => 'required|max:100',
-            'cep' => 'required|min:8|max:9',
+            'cep' => 'required|min:8|max:9|number',
             'complemento' => 'max:150',
             'senha' => 'required'
         ];
@@ -65,11 +65,11 @@ class ClienteFormRequest extends FormRequest
             'email.email' => 'formato de email invalido',
             'email.unique' => 'E-mail já cadastrado',
 
-
             'cpf.required' => 'CPF obrigatório',
             'cpf.max' => 'CPF deve conter no máximo 11 caracteres',
             'cpf.min' => 'CPF deve conter no mínimo 11 caracteres',
             'cpf.unique' => 'Cpf Já cadastrado no sistema',
+            'cpf.number',
 
             'dataNascimento.required' => 'Data de nascimento obrigatória',
 
@@ -81,22 +81,22 @@ class ClienteFormRequest extends FormRequest
             'estado.max' => 'O campo estado deve conter no máximo 2 caracteres',
 
             'pais.required' => 'pais obrigatório',
-            'pais.max' => 'O campo pais deve conter no máximo 2 caracteres',
+            'pais.max' => 'O campo pais deve conter no máximo 80 caracteres',
 
             'rua.required' => 'rua obrigatório',
-            'rua.max' => 'O campo rua deve conter no máximo 2 caracteres',
+            'rua.max' => 'O campo rua deve conter no máximo 120 caracteres',
 
             'numero.required' => 'numero obrigatório',
-            'numero.max' => 'O campo numero deve conter no máximo 2 caracteres',
+            'numero.max' => 'O campo numero deve conter no máximo 10 caracteres',
 
             'bairro.required' => 'bairro obrigatório',
-            'bairro.max' => 'O campo bairro deve conter no máximo 2 caracteres',
+            'bairro.max' => 'O campo bairro deve conter no máximo 100 caracteres',
 
             'cep.required' => "O campo cep é obrigatorio",
             'cep.max' => 'o campo cep deve conter no máximo 9 caracteres',
             'cep.min' => 'o campo cep deve conter no minimo 8 caracteres',
 
-            'complemento.max' => 'O campo complemento deve conter no máximo 2 caracteres',
+            'complemento.max' => 'O campo complemento deve conter no máximo 150 caracteres',
 
             'senha.required' => 'Senha obrigatoria'
         ];

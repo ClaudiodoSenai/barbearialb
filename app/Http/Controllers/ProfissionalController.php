@@ -55,10 +55,10 @@ class ProfissionalController extends Controller
 
     public function retornarTodos()
     {
-        $usuarios = Profissional::all();
+        $profissionais = Profissional::all();
         return response()->json([
             'status' => true,
-            'data' => $usuarios
+            'data' => $profissionais
         ]);
     }
 
@@ -113,7 +113,7 @@ class ProfissionalController extends Controller
         if (!isset($profissional)) {
             return response()->json([
                 'status' => false,
-                'message' => "profissional não atualizados"
+                'message' => "profissional não atualizado"
             ]);
         }
         if (isset($request->celular)) {
@@ -176,8 +176,6 @@ class ProfissionalController extends Controller
             $profissional->salario = $request->salario;
         }
 
-
-
         $profissional->update();
 
         return response()->json([
@@ -189,8 +187,6 @@ class ProfissionalController extends Controller
     public function pesquisarPorCpf(Request $request)
     {
         $profissional = Profissional::where('cpf', 'like', '%' . $request->cpf . '%')->get();
-        // Se a variavel estiver com algum registro, retorne status true, e exiba o registro da variavel vazia
-        // Caso contrario exiba status falso, com a mensagem,sem resultados para pesquisa
         if (count($profissional) > 0) {
 
             return response()->json([
@@ -236,6 +232,29 @@ class ProfissionalController extends Controller
             'status' => false,
             'message' => 'Não há resultados para a pesquisa.'
         ]);
+    }
+
+    public function esqueciMinhaSenha(Request $request)
+    {
+     
+        $profissional = Profissional::where('email', 'ILIKE', $request->email)->first();
+        if ($profissional) {
+            $novaSenha = $profissional->cpf;
+            $profissional->update([
+                'senha' => Hash::make($novaSenha),
+                'updated_at' => now()
+            ]);
+            return response()->json([
+                'status' => true,
+                'message' => 'Senha redefinida',
+                'nova_senha' => Hash::make($novaSenha)
+            ]);
+        } else {
+            return response()->json([
+                'status' => false,
+                'message' => 'Profissional não encontrado'
+            ]);
+        }
     }
 }
 

@@ -43,7 +43,6 @@ class ServicoUpdateFormRequest extends FormRequest
         return [
             'nome.max' => 'o campo nome deve conter no máximo 80 caracteres',
             'nome.min' => 'o campo nome deve conter no minimo 5 caracteres',
-            
            
             'descricao.max' => 'descricao deve conter no máximo 200 caracteres',
             'descricao.min' => 'descricao deve conter no mínimo 10 caracteres',
@@ -51,7 +50,6 @@ class ServicoUpdateFormRequest extends FormRequest
             'duracao.numeric' => 'O campo deve conter apenas numeros',
           
             'preco.decimal' => 'Informar valores em reais',
-        
         ];
 
 }
