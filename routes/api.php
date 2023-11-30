@@ -55,5 +55,5 @@ Route::delete('agenda/delete/{id}',[AgendaController::class,'excluirHorario']);
 Route::put('atualizar/horarios', [AgendaController::class,'updateHorarios']);
 Route::get('agenda/find/horario/{id}', [AgendaController::class, 'pesquisarPorIdAgenda']);
 Route::post('agenda/find/data', [AgendaController::class, 'pesquisarPorData']);
-Route::post('agenda/find/data/{profissional_id}', [AgendaController::class, 'pesquisarPorDataDoProfissional']);
+Route::post('agenda/find/data/', [AgendaController::class, 'pesquisarPorDataDoProfissional']);
 

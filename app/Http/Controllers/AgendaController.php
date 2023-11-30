@@ -70,7 +70,7 @@ class AgendaController extends Controller
                 "data" => $agendaProfissional
             ], 200);
         } else {
-            
+
             $agenda = Agenda::find($request->id);
 
             if (!isset($agenda)) {
@@ -137,8 +137,18 @@ class AgendaController extends Controller
 
     public function pesquisarPorDataDoProfissional(Request $request)
     {
-        $dataHora = $request->input('data_hora');
-        $agenda = Agenda::where('profissional_id',$request->profissional_id)->whereDate('data_hora', $dataHora)->get();
+
+        if ($request->profissional_id == 0 || $request->profissional_id == '') {
+            $agenda = Agenda::all();
+        } else {
+            $agenda = Agenda::where('profissional_id', $request->profissional_id);
+
+            if (isset($request->data_hora)) {
+                $agenda->whereDate('data_hora', '>=', $request->data_hora);
+            }
+            $agenda = $agenda->get();
+        }
+
         if (count($agenda) > 0) {
             return response()->json([
                 'status' => true,
@@ -151,4 +161,3 @@ class AgendaController extends Controller
         ]);
     }
 }
-
