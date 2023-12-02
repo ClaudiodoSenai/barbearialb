@@ -43,12 +43,12 @@ class ServicoFormRequest extends FormRequest
     {
         return [
             'nome.required' => "O campo nome é obrigatorio",
-            'nome.max' => 'o campo nome deve conter no máximo 80 caracteres',
-            'nome.min' => 'o campo nome deve conter no minimo 5 caracteres',
-            'nome.unique'=>'nome já cadastrado no sistema',
-            'descricao.required' => 'descricao obrigatório',
-            'descricao.max' => 'descricao deve conter no máximo 200 caracteres',
-            'descricao.min' => 'descricao deve conter no mínimo 10 caracteres',
+            'nome.max' => 'O campo nome deve conter no máximo 80 caracteres',
+            'nome.min' => 'O campo nome deve conter no minimo 5 caracteres',
+            'nome.unique'=>'Nome já cadastrado no sistema',
+            'descricao.required' => 'Descricao obrigatório',
+            'descricao.max' => 'Descricao deve conter no máximo 200 caracteres',
+            'descricao.min' => 'Descricao deve conter no mínimo 10 caracteres',
             'duracao.required' => 'A duração é obrigatório',
             'duracao.numeric' => 'O campo deve conter apenas numeros',
             'preco.required' => 'O campo é obrigatório',

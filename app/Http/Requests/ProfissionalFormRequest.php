@@ -54,22 +54,22 @@ class ProfissionalFormRequest extends FormRequest
     {
         return [
             'nome.required' => "O campo nome é obrigatorio",
-            'nome.max' => 'o campo nome deve conter no máximo 120 caracteres',
-            'nome.min' => 'o campo nome deve conter no minimo 5 caracteres',
+            'nome.max' => 'O campo nome deve conter no máximo 120 caracteres',
+            'nome.min' => 'O campo nome deve conter no minimo 5 caracteres',
 
             'celular.required' => 'Celular obrigatorio',
-            'celular.max' => 'celular deve conter no maximo 11 caracteres',
-            'celular.min' => 'celular deve conter no minimo 10 caracteres',
+            'celular.max' => 'Celular deve conter no maximo 11 caracteres',
+            'celular.min' => 'Celular deve conter no minimo 10 caracteres',
 
             'email.required' => 'Email obrigatorio',
-            'email.max' => 'o campo e-mail deve conter no máximo 120 caracteres',
-            'email.email' => 'formato de email invalido',
+            'email.max' => 'O campo e-mail deve conter no máximo 120 caracteres',
+            'email.email' => 'Formato de email invalido',
             'email.unique' => 'E-mail já cadastrado',
 
             'cpf.required' => 'CPF obrigatório',
             'cpf.max' => 'CPF deve conter no máximo 11 caracteres',
             'cpf.min' => 'CPF deve conter no mínimo 11 caracteres',
-            'cpf.unique' => 'Cpf Já cadastrado no sistema',
+            'cpf.unique' => 'CPF Já cadastrado no sistema',
 
             'dataNascimento.required' => 'Data de nascimento obrigatória',
 
@@ -93,8 +93,8 @@ class ProfissionalFormRequest extends FormRequest
             'bairro.max' => 'O campo bairro deve conter no máximo 100 caracteres',
 
             'cep.required' => "O campo cep é obrigatorio",
-            'cep.max' => 'o campo cep deve conter no máximo 9 caracteres',
-            'cep.min' => 'o campo cep deve conter no minimo 8 caracteres',
+            'cep.max' => 'O campo cep deve conter no máximo 8 caracteres',
+            'cep.min' => 'O campo cep deve conter no minimo 8 caracteres',
 
             'complemento.max' => 'O campo complemento deve conter no máximo 150 caracteres',
 
