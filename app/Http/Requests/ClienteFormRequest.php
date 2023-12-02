@@ -25,9 +25,9 @@ class ClienteFormRequest extends FormRequest
     {
         return [
             'nome' => 'required|max:120|min:5 ',
-            'celular' => 'required|max:11|min:10|number',
+            'celular' => 'required|max:11|min:10',
             'email' => 'required|max:120|unique:clientes,email|email:rfc,dns',
-            'cpf' => 'required|unique:clientes,cpf|max:11|min:11|number',
+            'cpf' => 'required|unique:clientes,cpf|max:11|min:11',
             'dataNascimento' => 'required',
             'cidade' => 'required|max:120',
             'estado' => 'required|min:2|max:2',
@@ -35,7 +35,7 @@ class ClienteFormRequest extends FormRequest
             'rua' => 'required|max:120',
             'numero' => 'required|max:10',
             'bairro' => 'required|max:100',
-            'cep' => 'required|min:8|max:9|number',
+            'cep' => 'required|min:8|max:9',
             'complemento' => 'max:150',
             'senha' => 'required'
         ];
@@ -69,7 +69,7 @@ class ClienteFormRequest extends FormRequest
             'cpf.max' => 'CPF deve conter no máximo 11 caracteres',
             'cpf.min' => 'CPF deve conter no mínimo 11 caracteres',
             'cpf.unique' => 'Cpf Já cadastrado no sistema',
-            'cpf.number',
+          
 
             'dataNascimento.required' => 'Data de nascimento obrigatória',
 
