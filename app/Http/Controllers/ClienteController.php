@@ -225,25 +225,24 @@ class ClienteController extends Controller
 
     public function esqueciMinhaSenha(Request $request)
     {
-
-        $cliente = Cliente::where('email', 'ILIKE', $request->email)->first();
-        if ($cliente) {
-            $novaSenha = $cliente->cpf;
-            $cliente->update([
-                'senha' => //Hash::make
-                ($novaSenha),
-                'updated_at' => now()
-            ]);
-            return response()->json([
-                'status' => true,
-                'message' => 'Senha redefinida',
-                'nova_senha' => Hash::make($novaSenha)
-            ]);
-        } else {
-            return response()->json([
-                'status' => false,
-                'message' => 'Cliente não encontrado'
-            ]);
-        }
+       $cliente = Cliente::where('email', 'LIKE', $request->email)->first();
+       if ($cliente) {
+           $novaSenha = $cliente->cpf;
+           $cliente->update([
+               'senha' => //Hash::make
+               ($novaSenha),
+               'updated_at' => now()
+           ]);
+           return response()->json([        
+               'status' => true,
+               'message' => 'Senha redefinida',
+               'nova_senha' => Hash::make($novaSenha)
+           ]);
+       } else {
+           return response()->json([
+               'status' => false,
+               'message' => 'Cliente não encontrado'
+           ]);
+       }
     }
 }

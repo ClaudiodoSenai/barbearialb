@@ -236,26 +236,25 @@ class ProfissionalController extends Controller
 
     public function esqueciMinhaSenha(Request $request)
     {
-     
-        $profissional = Profissional::where('email', 'ILIKE', $request->email)->first();
-        if ($profissional) {
-            $novaSenha = $profissional->cpf;
-            $profissional->update([
-                'senha' => //Hash::make
-                ($novaSenha),
-                'updated_at' => now()
-            ]);
-            return response()->json([
-                'status' => true,
-                'message' => 'Senha redefinida',
-                'nova_senha' => Hash::make($novaSenha)
-            ]);
-        } else {
-            return response()->json([
-                'status' => false,
-                'message' => 'Profissional não encontrado'
-            ]);
-        }
+       $profissional = Profissional::where('email', 'LIKE', $request->email)->first();
+       if ($profissional) {
+           $novaSenha = $profissional->cpf;
+           $profissional->update([
+               'senha' => //Hash::make
+               ($novaSenha),
+               'updated_at' => now()
+           ]);
+           return response()->json([        
+               'status' => true,
+               'message' => 'Senha redefinida',
+               'nova_senha' => Hash::make($novaSenha)
+           ]);
+       } else {
+           return response()->json([
+               'status' => false,
+               'message' => 'Profissional não encontrado'
+           ]);
+       }
     }
 }
 
