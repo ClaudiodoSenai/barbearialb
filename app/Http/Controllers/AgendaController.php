@@ -76,7 +76,7 @@ class AgendaController extends Controller
             if (!isset($agenda)) {
                 return response()->json([
                     'status' => false,
-                    'message' => 'Não há resultados para a Agenda'
+                    'message' => 'Não há resultados para horários'
                 ]);
             }
             if (isset($request->profissional_id)) {
@@ -122,7 +122,7 @@ class AgendaController extends Controller
 
     public function pesquisarPorData(Request $request)
     {
-        $agenda = Agenda::whereDate('data_hora', $request->data_hora)->get();
+        $agenda = Agenda::where('data_hora', 'like', '%' . $request->data_hora . '%')->get();
         if (count($agenda) > 0) {
             return response()->json([
                 'status' => true,

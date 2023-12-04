@@ -125,5 +125,9 @@ class ServicoController extends Controller
                 'data' => $servico
             ]);
         }
+        return response()->json([
+            'status' => false,
+            'message' => "Servico não encontrado"
+        ]);
 }
 }

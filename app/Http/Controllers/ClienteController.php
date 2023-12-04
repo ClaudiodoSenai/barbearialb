@@ -72,12 +72,13 @@ class ClienteController extends Controller
                 'status' => true,
                 'data' => $cliente
             ]);
-        }
+        } else {
 
-        return response()->json([
-            'status' => false,
-            'message' => 'Não há resultados para a pesquisa.'
-        ]);
+            return response()->json([
+                'status' => false,
+                'message' => 'Não há resultados para a pesquisa.'
+            ]);
+        }
     }
 
     public function excluir($id)
@@ -104,7 +105,7 @@ class ClienteController extends Controller
         if (!isset($cliente)) {
             return response()->json([
                 'status' => false,
-                'message' => "Clientes não atualizados"
+                'message' => "Clientes não atualizado"
             ]);
         }
         if (isset($request->celular)) {
@@ -225,24 +226,24 @@ class ClienteController extends Controller
 
     public function esqueciMinhaSenha(Request $request)
     {
-       $cliente = Cliente::where('email', 'LIKE', $request->email)->first();
-       if ($cliente) {
-           $novaSenha = $cliente->cpf;
-           $cliente->update([
-               'senha' => //Hash::make
-               ($novaSenha),
-               'updated_at' => now()
-           ]);
-           return response()->json([        
-               'status' => true,
-               'message' => 'Senha redefinida',
-               'nova_senha' => Hash::make($novaSenha)
-           ]);
-       } else {
-           return response()->json([
-               'status' => false,
-               'message' => 'Cliente não encontrado'
-           ]);
-       }
+        $cliente = Cliente::where('email', 'LIKE', $request->email)->first();
+        if ($cliente) {
+            $novaSenha = $cliente->cpf;
+            $cliente->update([
+                'senha' => //Hash::make
+                ($novaSenha),
+                'updated_at' => now()
+            ]);
+            return response()->json([
+                'status' => true,
+                'message' => 'Senha redefinida',
+                'nova_senha' => Hash::make($novaSenha)
+            ]);
+        } else {
+            return response()->json([
+                'status' => false,
+                'message' => 'Cliente não encontrado'
+            ]);
+        }
     }
 }
