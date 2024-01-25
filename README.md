@@ -35,4 +35,4 @@ Em caso de dúvidas, sugestões ou problemas, sinta-se à vontade para entrar em
 
 **Aviso**: Certifique-se de substituir "ClaudiodoSenai" no link de clonagem e "claudiorobertojunior5@gmail.com" na seção de contato pelos valores correspondentes do seu próprio usuário do GitHub e endereço de e-mail.
 
-Este é apenas um modelo básico de README.md, você pode adaptar e melhorar conforme suas necessidades específicas de projeto. Certifique-se de incluir informações importantes sobre como configurar, executar e testar os exercícios, bem como qualquer outra documentação relevante para tornar o repositório mais amigável e útil para outros desenvolvedores.
+Este é apenas um modelo básico de README.md, você pode adaptar e melhorar conforme suas necessidades específicas de projeto. Certifique-se de incluir informações importantes sobre como configurar, executar e testar os exercícios, bem como qualquer outra documentação relevante para tornar o repositório mais amigável e útil para outros desenvolvedores."# Barbearia_filo" 
