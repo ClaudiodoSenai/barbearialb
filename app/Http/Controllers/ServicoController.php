@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class ServicoController extends Controller
 {
-    public function store(ServicoFormRequest $request){
+    public function criarServico(ServicoFormRequest $request){
         $servico = Servico ::create([
             'nome' => $request ->nome,
             'descricao' => $request ->descricao,
@@ -64,7 +64,7 @@ class ServicoController extends Controller
         ]);
     }
 
-    public function excluir($id)
+    public function excluirServico($id)
     {
         $servico = Servico::find($id);
         if (!isset($servico)) {
@@ -80,7 +80,7 @@ class ServicoController extends Controller
         ]);
     }
 
-    public function update(ServicoUpdateFormRequest $request)
+    public function atualizarServico(ServicoUpdateFormRequest $request)
     {
         $servico = Servico::find($request->id);
 

@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Hash;
 
 class ProfissionalController extends Controller
 {
-    public function store(ProfissionalFormRequest $request)
+    public function criarProfissional(ProfissionalFormRequest $request)
     {
         $profissional = Profissional::create([
             'nome' => $request->nome,
@@ -80,7 +80,7 @@ class ProfissionalController extends Controller
         ]);
     }
 
-    public function excluir(Request $request)
+    public function excluirProfissional(Request $request)
     {
 
         $profissional = Profissional::find($request->id);
@@ -106,7 +106,7 @@ class ProfissionalController extends Controller
         ]);
     }
 
-    public function update(ProfissionalUpdateFormRequest $request)
+    public function atualizarProfissional(ProfissionalUpdateFormRequest $request)
     {
         $profissional = Profissional::find($request->id);
         //Função If set para verificar se a variavel está vazia ou com um valor determinado

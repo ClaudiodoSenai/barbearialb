@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Hash;
 
 class ClienteController extends Controller
 {
-    public function store(ClienteFormRequest $request)
+    public function criarCliente(ClienteFormRequest $request)
     {
         $cliente = Cliente::create([
             'nome' =>  $request->nome,
@@ -81,7 +81,7 @@ class ClienteController extends Controller
         }
     }
 
-    public function excluir($id)
+    public function excluirCliente($id)
     {
         $cliente = Cliente::find($id);
 
@@ -98,7 +98,7 @@ class ClienteController extends Controller
         ]);
     }
 
-    public function update(ClienteUpdateFormRequest $request)
+    public function atualizarCliente(ClienteUpdateFormRequest $request)
     {
         $cliente = Cliente::find($request->id);
 
